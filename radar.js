@@ -27,14 +27,33 @@ function _drawRadar(svg, center) {
 function _drawBlips(svg, center, json_path) {
   d3.json(json_path, function (json) {
     svg.selectAll("circle.blip")
-       .data(json)
+       .data(json["new"])
        .enter().append("circle")
                .attr("class", "blip")
                .attr("r", 7)
                .attr("cx", function (d) { return center.x + d.position.x; })
                .attr("cy", function (d) { return center.y + d.position.y; });
+
+     for (i in json["old"]) {
+       var blip = json["old"][i];
+       _drawTriangle(svg,
+                     center.x + blip.position.x,
+                     center.y + blip.position.y,
+                     13);
+     }
   });
 };
+
+function _drawTriangle(svg, x, y, h) {
+  var center = h / 2,
+      up = (x+center) + "," + y,
+      left = x + "," + (y+h),
+      right = (x+h) + "," + (y+h);
+
+  svg.append("polygon")
+     .attr("class", "blip")
+     .attr("points", up + " " + left + " " + right);
+}
 
 var width = 650,
     height = 650,
