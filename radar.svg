@@ -1,0 +1,42 @@
+<svg id="radar" width="650" height="650" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+  <svg id="techniques" class="quadrant">
+    <g>
+      <path d="M 325 0 a 325 325 0 0 0 -325 325 l 325 0 z" />
+      <path d="M 325 35 a 290 290 0 0 0 -290 290 l 290 0 z" />
+      <path d="M 325 40 a 285 285 0 0 0 -285 285 l 285 0 z" />
+      <path d="M 325 100 a 225 225 0 0 0 -225 225 l 225 0 z" />
+      <path d="M 325 215 a 110 110 0 0 0 -110 110 l 110 0 z" />
+    </g>
+  </svg>
+
+  <svg id="tools" class="quadrant">
+    <g transform="rotate(90 325 325)">
+      <path d="M 325 0 a 325 325 0 0 0 -325 325 l 325 0 z" />
+      <path d="M 325 35 a 290 290 0 0 0 -290 290 l 290 0 z" />
+      <path d="M 325 40 a 285 285 0 0 0 -285 285 l 285 0 z" />
+      <path d="M 325 100 a 225 225 0 0 0 -225 225 l 225 0 z" />
+      <path d="M 325 215 a 110 110 0 0 0 -110 110 l 110 0 z" />
+    </g>
+  </svg>
+
+  <svg id="languages" class="quadrant">
+    <g transform="rotate(180 325 325)">
+      <path d="M 325 0 a 325 325 0 0 0 -325 325 l 325 0 z" />
+      <path d="M 325 35 a 290 290 0 0 0 -290 290 l 290 0 z" />
+      <path d="M 325 40 a 285 285 0 0 0 -285 285 l 285 0 z" />
+      <path d="M 325 100 a 225 225 0 0 0 -225 225 l 225 0 z" />
+      <path d="M 325 215 a 110 110 0 0 0 -110 110 l 110 0 z" />
+    </g>
+  </svg>
+
+  <svg id="platforms" class="quadrant">
+    <g transform="rotate(270 325 325)">
+      <path d="M 325 0 a 325 325 0 0 0 -325 325 l 325 0 z" />
+      <path d="M 325 35 a 290 290 0 0 0 -290 290 l 290 0 z" />
+      <path d="M 325 40 a 285 285 0 0 0 -285 285 l 285 0 z" />
+      <path d="M 325 100 a 225 225 0 0 0 -225 225 l 225 0 z" />
+      <path d="M 325 215 a 110 110 0 0 0 -110 110 l 110 0 z" />
+    </g>
+  </svg>
+</svg>

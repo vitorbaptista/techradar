@@ -1,4 +1,4 @@
-circle.radar, line {
+path {
   stroke: #c4c4c4;
   stroke-width: 1.5px;
   fill: none;
@@ -6,5 +6,15 @@ circle.radar, line {
 
 circle.blip, polygon.blip {
   fill: #11a5e3;
+}
+
+circle.active, polygon.active {
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+div#blipDetails {
+  float: right;
+  max-width: 500px;
 }
 

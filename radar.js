@@ -1,30 +1,8 @@
-function _drawRadar(svg, center) {
-  var maxRadius = svg.attr("width") / 2 - 5,
-      steps = [5, 50, 55, 120, 220];
+function _drawBlips(json_path) {
+  var width = svg.attr("width"),
+      height = svg.attr("height"),
+      center = { x: width/2, y: height/2 };
 
-  for (i in steps) {
-    var radius = maxRadius - steps[i];
-    svg.append("circle")
-       .attr("class", "radar")
-       .attr("r", radius)
-       .attr("cx", center.x)
-       .attr("cy", center.y);
-  }
-
-  svg.append("line")
-     .attr("x1", center.x)
-     .attr("y1", 0)
-     .attr("x2", center.x)
-     .attr("y2", svg.attr("height"));
-
-  svg.append("line")
-     .attr("x1", 0)
-     .attr("y1", center.y)
-     .attr("x2", svg.attr("width"))
-     .attr("y2", center.y);
-};
-
-function _drawBlips(svg, center, json_path) {
   d3.json(json_path, function (json) {
     svg.selectAll("circle.blip")
        .data(json["old"])
@@ -38,7 +16,7 @@ function _drawBlips(svg, center, json_path) {
                .on("click", _clickBlip);
 
     svg.selectAll("polygon.blip")
-       .data(json["new"])
+       .data(json["new"], String)
        .enter().append("polygon")
                .attr("class", "blip")
                .attr("points", function (e) { return _trianglePoints(e, center); })
@@ -59,14 +37,20 @@ function _trianglePoints(e, center) {
   return up + " " + left + " " + right;
 }
 
-function _mouseOverBlip() {
+function _mouseOverBlip(blip) {
   d3.select(this).transition()
-    .style("fill", "red");
+                 .style("fill", "red");
+
+  details.select("#name").text(blip.name);
+  details.select("#description").text(blip.description);
 }
 
 function _mouseOutBlip() {
   d3.select(this).transition()
-    .style("fill", "#11a5e3");
+                 .style("fill", "#11a5e3");
+
+  details.select("#name").text("");
+  details.select("#description").text("");
 }
 
 function _clickBlip() {
@@ -77,14 +61,12 @@ function _clickBlip() {
   _mouseOverBlip.call(this);
 }
 
-var width = 650,
-    height = 650,
-    center = { x: width/2, y: height/2 };
+d3.xml("radar.svg", "image/svg+xml", function(xml) {
+  document.getElementById("content").appendChild(xml.documentElement);
 
-var svg = d3.select("#radar").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+  svg = d3.select("#radar");
+  details = d3.select("#blipDetails")
 
-_drawRadar(svg, center);
-_drawBlips(svg, center, "jan_2010.json");
+  _drawBlips("jan_2010.json");
+});
 
