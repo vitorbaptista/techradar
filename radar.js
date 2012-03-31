@@ -24,6 +24,18 @@ function _drawRadar(svg, center) {
      .attr("y2", center.y);
 };
 
+function _drawBlips(svg, center, json_path) {
+  d3.json(json_path, function (json) {
+    svg.selectAll("circle.blip")
+       .data(json)
+       .enter().append("circle")
+               .attr("class", "blip")
+               .attr("r", 7)
+               .attr("cx", function (d) { return center.x + d.position.x; })
+               .attr("cy", function (d) { return center.y + d.position.y; });
+  });
+};
+
 var width = 650,
     height = 650,
     center = { x: width/2, y: height/2 };
@@ -33,4 +45,5 @@ var svg = d3.select("#radar").append("svg")
     .attr("height", height);
 
 _drawRadar(svg, center);
+_drawBlips(svg, center, "jan_2010.json");
 

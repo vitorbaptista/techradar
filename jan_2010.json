@@ -1,0 +1,41 @@
+[
+  { "name": "Node.js",
+    "new": true,
+      "position": {
+        "x": 30,
+        "y": 50
+      }
+  },
+
+  { "name": "Backbone.js",
+    "new": true,
+    "position": {
+      "x": 30,
+      "y": -80
+    }
+  },
+
+  { "name": "MVC",
+    "new": false,
+    "position": {
+      "x": 100,
+      "y": 50
+    }
+  },
+
+  { "name": "Vagrant",
+    "new": true,
+    "position": {
+      "x": -30,
+      "y": 50
+    }
+  },
+
+  { "name": "POO",
+    "new": false,
+    "position": {
+      "x": -30,
+      "y": -50
+    }
+  }
+]

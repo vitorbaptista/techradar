@@ -4,3 +4,7 @@ circle.radar, line {
   fill: none;
 }
 
+circle.blip {
+  fill: #11a5e3;
+}
+
