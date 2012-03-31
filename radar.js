@@ -27,32 +27,44 @@ function _drawRadar(svg, center) {
 function _drawBlips(svg, center, json_path) {
   d3.json(json_path, function (json) {
     svg.selectAll("circle.blip")
-       .data(json["new"])
+       .data(json["old"])
        .enter().append("circle")
                .attr("class", "blip")
                .attr("r", 7)
-               .attr("cx", function (d) { return center.x + d.position.x; })
-               .attr("cy", function (d) { return center.y + d.position.y; });
+               .attr("cx", function (e) { return center.x + e.x; })
+               .attr("cy", function (e) { return center.y + e.y; })
+               .on("mouseover", _mouseOverBlip)
+               .on("mouseout", _mouseOutBlip);
 
-     for (i in json["old"]) {
-       var blip = json["old"][i];
-       _drawTriangle(svg,
-                     center.x + blip.position.x,
-                     center.y + blip.position.y,
-                     13);
-     }
+    svg.selectAll("polygon.blip")
+       .data(json["new"])
+       .enter().append("polygon")
+               .attr("class", "blip")
+               .attr("points", function (e) { return _trianglePoints(e, center); })
+               .on("mouseover", _mouseOverBlip)
+               .on("mouseout", _mouseOutBlip);
   });
 };
 
-function _drawTriangle(svg, x, y, h) {
-  var center = h / 2,
-      up = (x+center) + "," + y,
-      left = x + "," + (y+h),
+function _trianglePoints(e, center) {
+  var x = e.x + center.x,
+      y = e.y + center.y,
+      h = 15,
+      up = (x+h/2) + "," + (y),
+      left = (x) + "," + (y+h),
       right = (x+h) + "," + (y+h);
 
-  svg.append("polygon")
-     .attr("class", "blip")
-     .attr("points", up + " " + left + " " + right);
+  return up + " " + left + " " + right;
+}
+
+function _mouseOverBlip() {
+  d3.select(this).transition()
+    .style("fill", "red");
+}
+
+function _mouseOutBlip() {
+  d3.select(this).transition()
+    .style("fill", "#11a5e3");
 }
 
 var width = 650,

@@ -1,38 +1,28 @@
 { "new": [
   { "name": "Node.js",
-    "position": {
-      "x": 30,
-      "y": 50
-    }
+    "x": 30,
+    "y": 50
   },
 
-    { "name": "Backbone.js",
-      "position": {
-        "x": 30,
-        "y": -80
-      }
-    },
+  { "name": "Backbone.js",
+    "x": 30,
+    "y": -80
+  },
 
-    { "name": "MVC",
-      "position": {
-        "x": 100,
-        "y": 50
-      }
-    }
+  { "name": "MVC",
+      "x": 100,
+      "y": 50
+  }
 ],
 
 "old": [
   { "name": "Vagrant",
-    "position": {
-      "x": -30,
-      "y": 50
-    }
+    "x": -30,
+    "y": 50
   },
 
   { "name": "POO",
-    "position": {
-      "x": -30,
-      "y": -50
-    }
+    "x": -30,
+    "y": -50
   }
 ]}
