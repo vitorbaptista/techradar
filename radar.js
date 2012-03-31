@@ -34,7 +34,8 @@ function _drawBlips(svg, center, json_path) {
                .attr("cx", function (e) { return center.x + e.x; })
                .attr("cy", function (e) { return center.y + e.y; })
                .on("mouseover", _mouseOverBlip)
-               .on("mouseout", _mouseOutBlip);
+               .on("mouseout", _mouseOutBlip)
+               .on("click", _clickBlip);
 
     svg.selectAll("polygon.blip")
        .data(json["new"])
@@ -42,7 +43,8 @@ function _drawBlips(svg, center, json_path) {
                .attr("class", "blip")
                .attr("points", function (e) { return _trianglePoints(e, center); })
                .on("mouseover", _mouseOverBlip)
-               .on("mouseout", _mouseOutBlip);
+               .on("mouseout", _mouseOutBlip)
+               .on("click", _clickBlip);
   });
 };
 
@@ -65,6 +67,14 @@ function _mouseOverBlip() {
 function _mouseOutBlip() {
   d3.select(this).transition()
     .style("fill", "#11a5e3");
+}
+
+function _clickBlip() {
+  var element = d3.select(this),
+      mouseout = element.on("mouseout") ? null : _mouseOutBlip;
+
+  element.on("mouseout", mouseout);
+  _mouseOverBlip.call(this);
 }
 
 var width = 650,
