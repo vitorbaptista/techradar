@@ -1,0 +1,132 @@
+{
+  "techniques": [
+    {
+      "name": "Manual infrastructure management",
+      "new": false,
+      "x": -300,
+      "y": -40,
+      "description": "Don't do it"
+    },
+    {
+      "name": "Feature branching",
+      "new": false,
+      "x": -290,
+      "y": -100,
+      "description": "Please, don't do it"
+    },
+    {
+      "name": "Test recorders",
+      "new": true,
+      "x": -260,
+      "y": -180,
+      "description": "Test recorders seem invaluable as they provide a quick way to capture navigation through an application. However, we strongly advise against their regular use, as it tends to result in brittle tests which break with small changes to the UI. The test code they produce tends to be relatively poor and riddled with unnecessary duplication. Most importantly, test recorders tend to cut channels of communication between the test automation and development teams. When faced with an application that is difficult to test through the user interface, the solution is to have a critical conversation between the teams to build a more testable UI."
+    },
+    {
+      "name": "Database based integration",
+      "new": false,
+      "x": -210,
+      "y": -230,
+      "description": "Oldie but goodie"
+    },
+    {
+      "name": "Scrum certification",
+      "new": false,
+      "x": -160,
+      "y": -270,
+      "description": "Oldie but goodie"
+    },
+    {
+      "name": "Server/application container end-of-life",
+      "new": true,
+      "x": -80,
+      "y": -305,
+      "description": "Oldie but goodie"
+    }
+  ],
+
+  "tools": [
+    {
+      "name": "Riak",
+      "new": true,
+      "x": 220,
+      "y": -100,
+      "description": "Riak is a distributed key-value store that is schema-less and data-type agnostic, it can be put to good use in write heavy projects to store data such as sessions, shopping carts and streaming logs. The ability of the distributed cluster to self recover, distribute data across the cluster with tuneable consistency and availability settings, do collision detection and resolve those if needed can be helpful in high availability environments and provide interesting solutions in the architecture."
+    },
+    {
+      "name": "Maven",
+      "new": false,
+      "x": 275,
+      "y": -150,
+      "description": "Maven has long been a staple of build automation in the Java space. However, given its lack of flexibility and support for automation best practices, especially in the Continuous Delivery domain, the use of alternatives such as Gradle should be considered."
+    },
+    {
+      "name": "Frank",
+      "new": true,
+      "x": 100,
+      "y": -150,
+      "description": "Frank is an open source library that allows functional tests for iPhones and iPads to be written in Cucumber and executed on a remote device. This fills an important niche in iOS development where acceptance test-driven development was previously cumbersome and awkward."
+    },
+    {
+      "name": "Infrastructure as code",
+      "new": false,
+      "x": 40,
+      "y": -30,
+      "description": "We continue to highlight infrastructure as code. This technique treats infrastructure configuration in the same way as code; checking configuration into source control, then carefully pushing changes out to the data center."
+    }
+  ],
+
+  "platforms": [
+    {
+      "name": "AWS",
+      "new": false,
+      "x": -40,
+      "y": 40,
+      "description": "While it can be all too easy to ignore geographical location of cloud-based services, for legal and technical reasons it can be a serious constraint when considering appropriate platforms. With the recently announced Brazil and Singapore regions, Amazon has made AWS-based systems more viable for people in areas previously poorly served by IaaS providers. In addition, they continue to add features to existing services, such as VPC. We remain confident in recommending AWS for those situations where flexibility in provisioning resources is key."
+    },
+    {
+      "name": "Private clouds",
+      "new": true,
+      "x": -120,
+      "y": 100,
+      "description": "Because of concerns over privacy and security, or a need to repurpose existing hardware investments, many businesses are choosing to implement their own private cloud. There are are a variety of products, both open source and commercial for this purpose, but it should be noted that compute, storage, and network management are only the starting points for a useful private cloud. There are many services and processes that must be custom implemented to provide a cloud facility that rivals the public offerings from Amazon, Rackspace, or others."
+    },
+    {
+      "name": "OpenSocial",
+      "new": true,
+      "x": -150,
+      "y": 200,
+      "description": "OpenSocial is a specification that provides a standard way to share content between semi-trusted applications. While initially proposed for public facing social networking websites, it has possibly more potential within the corporate firewall, where the benefits of being able to share data and content between applications in a standard manner frequently outweigh the requirements of scale and security."
+    },
+    {
+      "name": "WS-*",
+      "new": false,
+      "x": -290,
+      "y": 100,
+      "description": "We are reiterating our advice that given the progress and acceptance of simpler web-as-platform techniques such as REST and OAuth and the known issues with WS-*, it should only be used cautiously."
+    }
+  ],
+
+  "languages": [
+    {
+      "name": "Care about languages",
+      "new": true,
+      "x": 60,
+      "y": 30,
+      "description": "The industry is experiencing something of a renaissance in programming languages. ThoughtWorks thinks it is time to start assessing which other languages will help your organization while taking stock of the useful lifetime remaining for your current choices. You need to care about languages. Traditionally structured organizations with separate support teams may find skills constrain choice, DevOps offers a path forwards here."
+    },
+    {
+      "name": "ClojureScript",
+      "new": true,
+      "x": 50,
+      "y": 250,
+      "description": "ClojureScript illustrates just how cross-platform the core of Clojure really is: they ported the primary parts to run on JavaScript. It is missing some of the whizz-bang features of Clojure on the JVM and CLR, like software transactional memory, but has a surprisingly high fidelity with its more sophisticated cousins. One interesting option afforded by ClojureScript is the ability to send data structures à la JSON using ClojureScript as the data structure. Because Clojure is a Lisp, this means that you can also send “real” code."
+    },
+    {
+      "name": "Google Dart",
+      "new": true,
+      "x": 150,
+      "y": 250,
+      "description": "Dart is Google's attempt at creating a programming language to replace JavaScript due to JavaScript's perceived flaws and inherent performance issues. Dart, in line with previous Google languages, provides Java-like syntax and semantics that are intended to be more appealing than JavaScript's prototype-based nature. Reception within the browser-development community has been understandably cool and it remains to be seem if the language will become more widely accepted, though Chrome's continued rise and the search for alternatives like CoffeeScript may yet shift that balance."
+    }
+  ]
+}

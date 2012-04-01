@@ -4,35 +4,49 @@ function _drawBlips(json_path) {
       center = { x: width/2, y: height/2 };
 
   d3.json(json_path, function (json) {
-    svg.selectAll("circle.blip")
-       .data(json["old"])
-       .enter().append("circle")
-               .attr("class", "blip")
-               .attr("r", 7)
-               .attr("cx", function (e) { return center.x + e.x; })
-               .attr("cy", function (e) { return center.y + e.y; })
-               .on("mouseover", _mouseOverBlip)
-               .on("mouseout", _mouseOutBlip)
-               .on("click", _clickBlip);
-
-    svg.selectAll("polygon.blip")
-       .data(json["new"], String)
-       .enter().append("polygon")
-               .attr("class", "blip")
-               .attr("points", function (e) { return _trianglePoints(e, center); })
-               .on("mouseover", _mouseOverBlip)
-               .on("mouseout", _mouseOutBlip)
-               .on("click", _clickBlip);
+    svg.selectAll("g.quadrant")
+       .each(function () { _drawBlipsFor(this, json); });
   });
 };
 
-function _trianglePoints(e, center) {
-  var x = e.x + center.x,
-      y = e.y + center.y,
-      h = 15,
-      up = (x+h/2) + "," + (y),
-      left = (x) + "," + (y+h),
-      right = (x+h) + "," + (y+h);
+function _drawBlipsFor(quadrant, json) {
+  var quadrant = d3.select(quadrant),
+      blips = json[quadrant.attr("id")] || [];
+
+  new_blips = blips.filter(function (d) { return !d["new"]; });
+  quadrant.selectAll("circle").data(new_blips).enter()
+          .append("circle")
+          .attr("class", "blip")
+          .attr("r", 7)
+          .attr("cx", function (e) { return e.x; })
+          .attr("cy", function (e) { return e.y; })
+          .on("mouseover", _mouseOverBlip)
+          .on("mouseout", _mouseOutBlip)
+          .on("click", _clickBlip);
+
+  old_blips = blips.filter(function (d) { return d["new"]; });
+  quadrant.selectAll("polygon").data(old_blips).enter()
+          .append("polygon")
+          .attr("class", "blip")
+          .attr("points", _trianglePoints)
+          .on("mouseover", _mouseOverBlip)
+          .on("mouseout", _mouseOutBlip)
+          .on("click", _clickBlip);
+
+  quadrant.selectAll("text").data(blips).enter()
+          .append("text")
+          .attr("class", "blip")
+          .attr("x", function (e) { return e.x; })
+          .attr("y", function (e) { return e.y - 10; })
+          .attr("dx", function (e) { return -5 * (e.name.length/2); })
+          .text(function (e) { return e.name; });
+}
+
+function _trianglePoints(e) {
+  var h = 15,
+      up = (e.x+h/2) + "," + (e.y),
+      left = (e.x) + "," + (e.y+h),
+      right = (e.x+h) + "," + (e.y+h);
 
   return up + " " + left + " " + right;
 }
@@ -67,6 +81,6 @@ d3.xml("radar.svg", "image/svg+xml", function(xml) {
   svg = d3.select("#radar");
   details = d3.select("#blipDetails")
 
-  _drawBlips("jan_2010.json");
+  _drawBlips("mar_2010.json");
 });
 

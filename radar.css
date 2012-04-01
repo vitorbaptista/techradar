@@ -13,6 +13,9 @@ circle.active, polygon.active {
   stroke-width: 1.5px;
 }
 
+text.blip {
+}
+
 div#blipDetails {
   float: right;
   max-width: 500px;
