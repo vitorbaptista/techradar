@@ -1,23 +1,75 @@
+/* BASIC PAGE STYLES */
+body {
+  font-size: 14px;
+  line-height: 21px;
+  font-family: sans-serif;
+  color: #444;
+  margin: 0;
+  padding: 0;
+  background: rgb(240,240,240);
+  background: -moz-linear-gradient(-45deg,  rgba(240,240,240,1) 0%, rgba(232,232,232,1) 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(240,240,240,1)), color-stop(100%,rgba(232,232,232,1)));
+  background: -webkit-linear-gradient(-45deg,  rgba(240,240,240,1) 0%,rgba(232,232,232,1) 100%);
+  background: -o-linear-gradient(-45deg,  rgba(240,240,240,1) 0%,rgba(232,232,232,1) 100%);
+  background: -ms-linear-gradient(-45deg,  rgba(240,240,240,1) 0%,rgba(232,232,232,1) 100%);
+  background: linear-gradient(-45deg,  rgba(240,240,240,1) 0%,rgba(232,232,232,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f0f0', endColorstr='#e8e8e8',GradientType=1 );
+}
+.header {
+  background: #27aae1;
+  background: -moz-linear-gradient(top,  #27aae1 0%, #0b6081 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#27aae1), color-stop(100%,#0b6081));
+  background: -webkit-linear-gradient(top,  #27aae1 0%,#0b6081 100%);
+  background: -o-linear-gradient(top,  #27aae1 0%,#0b6081 100%);
+  background: -ms-linear-gradient(top,  #27aae1 0%,#0b6081 100%);
+  background: linear-gradient(top,  #27aae1 0%,#0b6081 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#27aae1', endColorstr='#0b6081',GradientType=0 );
+  border-bottom: 1px solid #004061;
+}
+.header h1 {
+  margin: 0;
+  color: white;
+  padding: 10px;
+  font-size: 18px;
+  text-shadow: #000 1px 1px 0;
+}
+#blipDetails {
+  display: block;
+  width: 500px;
+  position: absolute;
+  right: 30px;
+  top: 70px;
+  padding: 0 20px;
+  background: white;
+  border: 1px solid #CCC;
+  border-radius: 6px;
+  box-shadow: #BBB 0 0 2px;
+}
+.content {
+  text-align: center;
+}
+/* SVG STYLES */
+#radar {
+  margin: 40px;
+}
 path {
-  stroke: #c4c4c4;
-  stroke-width: 1.5px;
+  stroke: #CCC;
+  stroke-width: 1px;
   fill: none;
 }
-
-circle.blip, polygon.blip {
-  fill: #11a5e3;
+circle.blip,
+polygon.blip {
+  fill: #11A5E3;
+  cursor: pointer;
 }
-
-circle.active, polygon.active {
+circle.active,
+polygon.active {
+  cursor: pointer;
   stroke: #000;
-  stroke-width: 1.5px;
+  stroke-width: 1px;
 }
-
+/* shows text only when zoomed */
 text.blip {
+  text-shadow: #fff 1px 1px 0;
+  font-weight: 100;
 }
-
-div#blipDetails {
-  float: right;
-  max-width: 500px;
-}
-

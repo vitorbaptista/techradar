@@ -53,7 +53,7 @@ function _trianglePoints(e) {
 
 function _mouseOverBlip(blip) {
   d3.select(this).transition()
-                 .style("fill", "red");
+                 .style("fill", "#DC143C");
 
   details.select("#name").text(blip.name);
   details.select("#description").text(blip.description);
