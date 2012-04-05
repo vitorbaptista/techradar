@@ -16,6 +16,10 @@
         <p id="description">Lorem ipsum sit dolor amet</p>
       </div>
     </div>
-    <script src="radar.js"></script>
+    <script type="text/javascript" src="radar.js"></script>
+    <script>
+      var content = document.getElementById("content");
+      Radar.draw(content, "radar.svg", "thoughtworks_tech_radar_jan_2012.json");
+    </script>
   </body>
 </html>

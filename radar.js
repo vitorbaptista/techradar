@@ -1,86 +1,90 @@
-function _drawBlips(json_path) {
-  var width = svg.attr("width"),
-      height = svg.attr("height"),
-      center = { x: width/2, y: height/2 };
+Radar = (function (){
+  function draw(element, svg_path, json_path){
+    d3.xml(svg_path, 'image/svg+xml', function (xml) {
+      element.appendChild(xml.documentElement);
 
-  d3.json(json_path, function (json) {
-    svg.selectAll("g.quadrant")
-       .each(function () { _drawBlipsFor(this, json); });
-  });
-};
+      var svg = d3.select('#radar');
 
-function _drawBlipsFor(quadrant, json) {
-  var quadrant = d3.select(quadrant),
-      blips = json[quadrant.attr("id")] || [];
+      _defineBlips(svg);
+      _drawBlips(svg, json_path);
+    });
+  }
 
-  new_blips = blips.filter(function (d) { return !d["new"]; });
-  quadrant.selectAll("circle").data(new_blips).enter()
-          .append("circle")
-          .attr("class", "blip")
-          .attr("r", 7)
-          .attr("cx", function (e) { return e.x; })
-          .attr("cy", function (e) { return e.y; })
-          .on("mouseover", _mouseOverBlip)
-          .on("mouseout", _mouseOutBlip)
-          .on("click", _clickBlip);
+  function _defineBlips(svg) {
+    var definitions = svg.append('defs');
 
-  old_blips = blips.filter(function (d) { return d["new"]; });
-  quadrant.selectAll("polygon").data(old_blips).enter()
-          .append("polygon")
-          .attr("class", "blip")
-          .attr("points", _trianglePoints)
-          .on("mouseover", _mouseOverBlip)
-          .on("mouseout", _mouseOutBlip)
-          .on("click", _clickBlip);
+    definitions.append('circle')
+               .attr('r', 4)
+               .attr('class', 'unchanged blip')
+               .attr('id', 'circular-blip');
 
-  quadrant.selectAll("text").data(blips).enter()
-          .append("text")
-          .attr("class", "blip")
-          .attr("x", function (e) { return e.x; })
-          .attr("y", function (e) { return e.y - 10; })
-          .attr("dx", function (e) { return -5 * (e.name.length/2); })
-          .text(function (e) { return e.name; });
-}
+   definitions.append('polygon')
+              .attr('points', '-2,-2 8,-2 3,-10')
+              .attr('class', 'changed blip')
+              .attr('id', 'triangular-blip');
 
-function _trianglePoints(e) {
-  var h = 15,
-      up = (e.x+h/2) + "," + (e.y),
-      left = (e.x) + "," + (e.y+h),
-      right = (e.x+h) + "," + (e.y+h);
+    return svg;
+  }
 
-  return up + " " + left + " " + right;
-}
+  function _drawBlips(svg, json_path) {
+    d3.json(json_path, function (blipData) {
+      _drawBlipsUpon(svg, blipData);
+    });
+  }
 
-function _mouseOverBlip(blip) {
-  d3.select(this).transition()
-                 .style("fill", "#DC143C");
+  function _drawBlipsUpon(svg, blipData) {
+    var center = _centerOf(svg),
+        blips = svg.selectAll('.blip-container')
+                   .data(blipData);
+        blip = blips.enter()
+                    .append('g')
+                    .attr('class', 'blip-container');
+    blip.append('use')
+        .attr('xlink:href', function (blip) {
+          return blip.movement == 'c' ? '#circular-blip' : '#triangular-blip';
+        })
+        .attr('x', function (blip){
+          return center.x + _toRect(blip.pc).x;
+        })
+        .attr('y', function (blip){
+          return center.y + _toRect(blip.pc).y;
+        })
+        .attr('title', function (blip) { return blip.name });
 
-  details.select("#name").text(blip.name);
-  details.select("#description").text(blip.description);
-}
+    blip.append('text')
+        .text(function (blip, index) { return index; })
+        .attr('class', 'label')
+        .attr('transform', function (blip) {
+          var blipCenter = _toRect(blip.pc);
+          return 'translate(' + (center.x+blipCenter.x+5) + ', ' + (center.y+blipCenter.y-2) + ')';
+        });
 
-function _mouseOutBlip() {
-  d3.select(this).transition()
-                 .style("fill", "#11a5e3");
+    return svg;
+  }
 
-  details.select("#name").text("");
-  details.select("#description").text("");
-}
+  function _centerOf(d3_element) {
+    var element = document.getElementById(d3_element.attr('id')),
+        bbox = element.getBBox();
 
-function _clickBlip() {
-  var element = d3.select(this),
-      mouseout = element.on("mouseout") ? null : _mouseOutBlip;
+    return _point(bbox.width / 2, bbox.height / 2);
+  }
 
-  element.on("mouseout", mouseout);
-  _mouseOverBlip.call(this);
-}
+  function _point(x, y) {
+    return {
+      'x': x,
+      'y': y
+    };
+  }
 
-d3.xml("radar.svg", "image/svg+xml", function(xml) {
-  document.getElementById("content").appendChild(xml.documentElement);
+  function _toRect(polarCoords) {
+    var angleInRadians = polarCoords.t / (2*Math.PI);
+    function xProjection(r,a) { return r * Math.cos(a); }
+    function yProjection(r,a) { return r * Math.sin(a); }
+    return _point(xProjection(polarCoords.r, angleInRadians), yProjection(polarCoords.r, angleInRadians));
+  }
 
-  svg = d3.select("#radar");
-  details = d3.select("#blipDetails")
-
-  _drawBlips("mar_2010.json");
-});
+  return {
+    draw: draw
+  };
+})();
 
