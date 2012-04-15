@@ -5,9 +5,34 @@ Radar = (function (){
 
       var svg = d3.select('#radar');
 
+      _doRadar(svg);
       _defineBlips(svg);
       _drawBlips(svg, json_path);
     });
+  }
+
+  function _doRadar(svg) {
+    var quadrants = svg.selectAll('g.quadrant')
+
+    quadrants.select('.largest-arc')
+             .on('click', function () {
+               var d3_element = d3.select(this),
+                   element = document.getElementById(d3_element.attr("id")),
+                   rect = element.getBoundingClientRect(),
+                   offX = -(rect.left + (rect.left > 50 ? rect.width : 0)),
+                   offY = -(rect.top + (rect.top > 50 ? rect.height : 0));
+
+               d3.selectAll('g#radar').transition()
+                 .attr('transform', function (d3_element) {
+                   if (d3_element.classed('active')) {
+                     d3_element.attr('class', 'largest-arc')
+                     return 'translate(-' + offX + ',-' + offY + ') scale(1)';
+                   } else {
+                     d3_element.attr('class', 'largest-arc active')
+                     return 'translate(' + offX + ',' + offY + ') scale(2)';
+                   }
+                 }(d3_element))
+             })
   }
 
   function _defineBlips(svg) {

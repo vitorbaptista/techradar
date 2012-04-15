@@ -73,3 +73,7 @@ text.blip {
   text-shadow: #fff 1px 1px 0;
   font-weight: 100;
 }
+path.largest-arc {
+  fill: red;
+  fill-opacity: 0;
+}
