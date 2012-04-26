@@ -34,6 +34,10 @@
       function zoomOut() {
         d3.select("g#radar").transition()
           .attr('transform', '');
+
+        d3.selectAll('text').transition()
+          .duration(800)
+          .style('opacity', '0')
       }
       var content = document.getElementById("content");
       Radar.draw(content, "radar.svg", "thoughtworks_tech_radar_jan_2012.json");

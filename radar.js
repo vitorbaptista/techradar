@@ -39,6 +39,10 @@ Radar = (function (){
 
                d3.selectAll('g#radar').transition()
                  .attr('transform', 'translate(' + offX + ',' + offY + ') scale(2)');
+
+               d3.selectAll('text').transition()
+                 .duration(800)
+                 .style('opacity', '1')
              })
   }
 
@@ -85,6 +89,7 @@ Radar = (function (){
 
     blip.append('text')
         .text(function (blip, index) { return index; })
+        .style('opacity', '0')
         .attr('class', 'label')
         .attr('transform', function (blip) {
           var blipCenter = _toRect(blip.pc);
