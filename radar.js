@@ -17,21 +17,28 @@ Radar = (function (){
     quadrants.select('.largest-arc')
              .on('click', function () {
                var d3_element = d3.select(this),
-                   element = document.getElementById(d3_element.attr("id")),
-                   rect = element.getBoundingClientRect(),
-                   offX = -(rect.left + (rect.left > 50 ? rect.width : 0)),
-                   offY = -(rect.top + (rect.top > 50 ? rect.height : 0));
+                   id = d3_element.attr('id'),
+                   size = 800,
+                   offX = 0,
+                   offY = 0;
+
+               switch (id) {
+                 case 'techniques-arc':
+                   break;
+                 case 'tools-arc':
+                   offX = -size;
+                   break;
+                 case 'languages-arc':
+                   offX = -size;
+                   offY = -size;
+                   break;
+                 case 'platforms-arc':
+                   offY = -size;
+                   break;
+               }
 
                d3.selectAll('g#radar').transition()
-                 .attr('transform', function (d3_element) {
-                   if (d3_element.classed('active')) {
-                     d3_element.attr('class', 'largest-arc')
-                     return 'translate(-' + offX + ',-' + offY + ') scale(1)';
-                   } else {
-                     d3_element.attr('class', 'largest-arc active')
-                     return 'translate(' + offX + ',' + offY + ') scale(2)';
-                   }
-                 }(d3_element))
+                 .attr('transform', 'translate(' + offX + ',' + offY + ') scale(2)');
              })
   }
 

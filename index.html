@@ -14,10 +14,27 @@
       <div id="blipDetails" class="details">
         <h2 id="name">Consectur sit amet</h2>
         <p id="description">Lorem ipsum sit dolor amet</p>
+        <p>
+          <a href="javascript:zoomIn('techniques')">Techniques</a>
+          <a href="javascript:zoomIn('tools')">Tools</a>
+          <a href="javascript:zoomIn('languages')">Languages</a>
+          <a href="javascript:zoomIn('platforms')">Platforms</a>
+          <a href="javascript:zoomOut()">OUT</a>
+        </p>
       </div>
     </div>
     <script type="text/javascript" src="radar.js"></script>
     <script>
+      function zoomIn(quadrantName) {
+        var quadrant = d3.select("g#" + quadrantName).select(".largest-arc");
+
+        quadrant.on("click").call(quadrant[0][0]);
+      }
+
+      function zoomOut() {
+        d3.select("g#radar").transition()
+          .attr('transform', '');
+      }
       var content = document.getElementById("content");
       Radar.draw(content, "radar.svg", "thoughtworks_tech_radar_jan_2012.json");
     </script>
