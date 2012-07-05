@@ -30,6 +30,13 @@ polygon.active {
   stroke: #000;
   stroke-width: 1px;
 }
+text.label {
+  cursor: pointer;
+}
+g.active use {
+  stroke: red;
+  stroke-width: 1px;
+}
 /* shows text only when zoomed */
 text.blip {
   text-shadow: #fff 1px 1px 0;

@@ -74,7 +74,9 @@ Radar = (function (){
                    .data(blipData);
         blip = blips.enter()
                     .append('g')
-                    .attr('class', 'blip-container');
+                    .attr('class', 'blip-container')
+                    .on('click', _showBlipDescription);
+
     blip.append('use')
         .attr('xlink:href', function (blip) {
           return blip.movement == 'c' ? '#circular-blip' : '#triangular-blip';
@@ -85,14 +87,12 @@ Radar = (function (){
         .attr('y', function (blip){
           return center.y + _toRect(blip.pc).y;
         })
-        .attr('title', function (blip) { return blip.name })
-        .on('click', _showBlipDescription);
+        .attr('title', function (blip) { return blip.name });
 
     blip.append('text')
-        .text(function (blip, index) { return index; })
+        .text(function (blip) { return blip.name; })
         .style('opacity', '0')
         .attr('class', 'label')
-        .on('click', _showBlipDescription)
         .attr('transform', function (blip) {
           var blipCenter = _toRect(blip.pc);
           return 'translate(' + (center.x+blipCenter.x+5) + ', ' + (center.y+blipCenter.y-2) + ')';
@@ -102,6 +102,9 @@ Radar = (function (){
   }
 
   function _showBlipDescription(blip) {
+    d3.selectAll('.blip-container').attr('class', 'blip-container');
+    d3.select(this).attr('class', 'blip-container active');
+
     $('#blip-name').text(blip.name);
     $('#blip-description').text(blip.description);
   };
