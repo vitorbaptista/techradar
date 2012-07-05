@@ -219,11 +219,11 @@
 <hr />
 
         <p>
-          <a href="javascript:zoomIn('techniques')">Techniques</a> |
-          <a href="javascript:zoomIn('tools')">Tools</a> |
-          <a href="javascript:zoomIn('languages')">Languages</a> |
-          <a href="javascript:zoomIn('platforms')">Platforms</a> |
-          <a href="javascript:zoomOut()">OUT</a>
+          <a href="javascript:Radar.zoomIn('techniques')">Techniques</a> |
+          <a href="javascript:Radar.zoomIn('tools')">Tools</a> |
+          <a href="javascript:Radar.zoomIn('languages')">Languages</a> |
+          <a href="javascript:Radar.zoomIn('platforms')">Platforms</a> |
+          <a href="javascript:Radar.zoomOut()">OUT</a>
         </p>
 </div>
 <div class="block">
@@ -331,21 +331,6 @@
         <script type="text/javascript" src="d3.v2.min.js"></script>
         <script type="text/javascript" src="radar.js"></script>
     <script>
-      function zoomIn(quadrantName) {
-        var quadrant = d3.select("g#" + quadrantName).select(".largest-arc");
-
-        quadrant.on("click").call(quadrant[0][0]);
-      }
-
-      function zoomOut() {
-        d3.select("g#radar").transition()
-          .attr('transform', '');
-
-        d3.selectAll('text').transition()
-          .duration(800)
-          .style('opacity', '0')
-          .style('display', 'none');
-      }
       var content = document.getElementById("content");
       Radar.draw(content, "radar.svg", "thoughtworks_tech_radar_jan_2012.json");
     </script>

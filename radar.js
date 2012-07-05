@@ -11,6 +11,22 @@ Radar = (function (){
     });
   }
 
+  function zoomIn(quadrantName) {
+    var quadrant = d3.select("g#" + quadrantName).select(".largest-arc");
+
+    quadrant.on("click").call(quadrant[0][0]);
+  }
+
+  function zoomOut() {
+    d3.select("g#radar").transition()
+      .attr('transform', '');
+
+    d3.selectAll('text').transition()
+      .duration(800)
+      .style('opacity', '0')
+      .style('display', 'none');
+  }
+
   function _doRadar(svg) {
     var quadrants = svg.selectAll('g.quadrant')
 
@@ -107,9 +123,19 @@ Radar = (function (){
     d3.selectAll('.blip-container').attr('class', 'blip-container');
     d3.select(this).attr('class', 'blip-container active');
 
+    _zoomInBlip(blip);
+
     $('#blip-name').text(blip.name);
     $('#blip-description').text(blip.description);
   };
+
+  function _zoomInBlip(blip) {
+    var theta = blip.pc.t % 360,
+        quadrants = ['languages', 'platforms', 'techniques', 'tools'],
+        quadrant = quadrants[Math.floor(theta / 90)];
+
+    zoomIn(quadrant);
+  }
 
   function _centerOf(d3_element) {
     var element = document.getElementById(d3_element.attr('id')),
@@ -133,7 +159,9 @@ Radar = (function (){
   }
 
   return {
-    draw: draw
+    draw: draw,
+    zoomIn: zoomIn,
+    zoomOut: zoomOut
   };
 })();
 
