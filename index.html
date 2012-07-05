@@ -344,6 +344,7 @@
         d3.selectAll('text').transition()
           .duration(800)
           .style('opacity', '0')
+          .style('display', 'none');
       }
       var content = document.getElementById("content");
       Radar.draw(content, "radar.svg", "thoughtworks_tech_radar_jan_2012.json");
