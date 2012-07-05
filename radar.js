@@ -126,7 +126,7 @@ Radar = (function (){
   }
 
   function _toRect(polarCoords) {
-    var angleInRadians = polarCoords.t / (2*Math.PI);
+    var angleInRadians = (polarCoords.t * Math.PI) / 180;
     function xProjection(r,a) { return r * Math.cos(a); }
     function yProjection(r,a) { return r * Math.sin(a); }
     return _point(xProjection(polarCoords.r, angleInRadians), yProjection(polarCoords.r, angleInRadians));
