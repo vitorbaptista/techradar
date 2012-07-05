@@ -11,9 +11,6 @@
   box-shadow: #BBB 0 0 2px;
 }
 /* SVG STYLES */
-#radar {
-  margin: 40px;
-}
 path {
   stroke: #CCC;
   stroke-width: 1px;

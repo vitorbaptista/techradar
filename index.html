@@ -129,12 +129,24 @@
     <li> Smaller, simpler and faster applications and services</li>
 </ul>
 
-<div class='tag-list'><b>Tags: </b><span class='tag'> Technology Radar</span> <span class='devider'>|</span> <span class='tag'> featured</span></div></div>
+<div class='tag-list'><b>Tags: </b><span class='tag'> Technology Radar</span> <span class='devider'>|</span> <span class='tag'> featured</span></div>
+        <div class="page_navigation"><b>Jump to:</b>
+        <a href="javascript:Radar.zoomIn('techniques')" class="page_navigation_link">Techniques</a>
+        <a href="javascript:Radar.zoomIn('tools')" class="page_navigation_link">Tools</a>
+        <a href="javascript:Radar.zoomIn('platforms')" class="page_navigation_link">Platforms</a>
+        <a href="javascript:Radar.zoomIn('languages')" class="page_navigation_link">Languages</a>
+        <a href="javascript:Radar.zoomOut()" class="page_navigation_link">Overview</a>
+        <a href="#References" class="page_navigation_link">References</a>
+        <a href="#About-ThoughtWorks" class="page_navigation_link last">About ThoughtWorks</a>
         </div>
-</div>
+</div></div>
+        </div>
 <div class="field field-type-text field-field-article-paragraph">
     <div class="field-items">
             <div class="field-item odd">
+<div id="radar-container"></div>
+<a href='technology-radar-march-2012#top' class='button right'>top^</a>        </div>
+              <div class="field-item even">
                     <p>The ThoughtWorks Technology Advisory Board is a group of senior technology leaders within ThoughtWorks. They produce the ThoughtWorks Technology Radar to help decision makers understand emerging technologies and trends that affect the market today. This group meets regularly to discuss the global technology strategy for ThoughtWorks and the technology trends that significantly impact our industry.
 
 <p>The Technology Radar captures the output of these discussions in a format that provides value to a wide range of stakeholders, from CIOs to enterprise developers. The content provided in this document is kept at a summary level, leaving it up to the reader to pursue more detail when needed. The goal of the radar is conciseness, so that its target audience understands it quickly. The radar is graphical in nature, grouping items into techniques, tools, languages and platforms. Some radar items could appear in multiple quadrants, but we mapped them to the quadrant that seemed most appropriate. We further group these items in four rings to reflect our current position on them.
@@ -179,9 +191,6 @@
 
 <a href='technology-radar-march-2012#top' class='button right'>top^</a>        </div>
               <div class="field-item even">
-<div id="content"></div>
-<a href='technology-radar-march-2012#top' class='button right'>top^</a>        </div>
-              <div class="field-item even">
                     <a name="References" class="navigation_target">&nbsp;</a>
 <h4 id="toc5">References</h4>
  <ul>
@@ -218,18 +227,10 @@
 <h3 id="toc7"> <a href="http://www.thoughtworks.cfiles/images/52/radar-march-2012-landscape-medium.jpg"   rel="lightbox"   > Technology Radar March 2012  </a></h3>
 <hr />
 
-        <p>
-          <a href="javascript:Radar.zoomIn('techniques')">Techniques</a> |
-          <a href="javascript:Radar.zoomIn('tools')">Tools</a> |
-          <a href="javascript:Radar.zoomIn('languages')">Languages</a> |
-          <a href="javascript:Radar.zoomIn('platforms')">Platforms</a> |
-          <a href="javascript:Radar.zoomOut()">OUT</a>
-        </p>
-</div>
-<div class="block">
-<h3 id="blip-name">Blip Title</h3>
-<hr />
-<p id="blip-description">Bla bla bla</p>
+<p>
+<h4 id="blip-name"></h4>
+<p id="blip-description"></p>
+</p>
 </div>
 <div id="block-287" class="block ">
 
@@ -331,8 +332,8 @@
         <script type="text/javascript" src="d3.v2.min.js"></script>
         <script type="text/javascript" src="radar.js"></script>
     <script>
-      var content = document.getElementById("content");
-      Radar.draw(content, "radar.svg", "thoughtworks_tech_radar_jan_2012.json");
+      var radar = document.getElementById("radar-container");
+      Radar.draw(radar, "radar.svg", "thoughtworks_tech_radar_jan_2012.json");
     </script>
 <script type="text/javascript">
 <!--//--><![CDATA[//><!--
