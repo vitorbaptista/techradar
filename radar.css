@@ -32,6 +32,7 @@ polygon.active {
 }
 text.label {
   cursor: pointer;
+  font: 9px arial,helvetica,clean,sans-serif;
 }
 g.active use {
   stroke: red;
