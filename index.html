@@ -7,20 +7,10 @@
 <meta name="GOOGLEBOT" content="NOODP" />
 <link rel="shortcut icon" href="themes/corporate/favicon.ico" type="image/x-icon" />
         <link type="text/css" rel="stylesheet" media="all" href="files/css/css_bf4b5d81c8c755ace50b050d524d6b9b.css" />
+        <link type="text/css" rel="stylesheet" media="all" href="radar.css" />
 
-<!--[if lt IE 7]><link type="text/css" rel="stylesheet" media="all" hrefthemes/corporate/ie6.css" /><![endif]--><script type="text/javascript">							
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-774114-3']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>       
-    </head>
+<!--[if lt IE 7]><link type="text/css" rel="stylesheet" media="all" href="themes/corporate/ie6.css" /><![endif]-->
+</head>
     <body class="technology-radar-march-2012 article node">
         <div id="container">
             <div id="header">
@@ -139,7 +129,7 @@
     <li> Smaller, simpler and faster applications and services</li>
 </ul>
 
-<div class='tag-list'><b>Tags: </b><span class='tag'> Technology Radar</span> <span class='devider'>|</span> <span class='tag'> featured</span></div><div class="page_navigation"><b>Jump to:</b><a href="technology-radar-march-2012#Techniques" class="page_navigation_link">Techniques</a><a href="technology-radar-march-2012#Tools" class="page_navigation_link">Tools</a><a href="technology-radar-march-2012#Platforms" class="page_navigation_link">Platforms</a><a href="technology-radar-march-2012#Languages" class="page_navigation_link">Languages</a><a href="technology-radar-march-2012#References" class="page_navigation_link">References</a><a href="technology-radar-march-2012#About-ThoughtWorks" class="page_navigation_link last">About ThoughtWorks</a></div>        </div>
+<div class='tag-list'><b>Tags: </b><span class='tag'> Technology Radar</span> <span class='devider'>|</span> <span class='tag'> featured</span></div></div>
         </div>
 </div>
 <div class="field field-type-text field-field-article-paragraph">
@@ -189,118 +179,7 @@
 
 <a href='technology-radar-march-2012#top' class='button right'>top^</a>        </div>
               <div class="field-item even">
-                    <a name="Techniques" class="navigation_target">&nbsp;</a>
-<h4 id="toc1">Techniques</h4>
- <strong>Emergent design</strong> is one of the more advanced aspects of agile engineering practices, and therefore an area of active research &amp; development. We have identified at least two facets of emergent design: the Lean software principle of “last responsible moment”, which mostly applies to greenfield projects, and “finding &amp; harvesting idiomatic patterns”, which is more applicable to existing projects.<p>We recommend adopting <strong>evolutionary architecture</strong> as an alternative to traditional up front, heavy-weight enterprise architectural designs. Such architectures should be driven by the underlying technical requirements of the system, rather than speculative planning for a future that may change.
-
-<p><strong>Micro-services</strong>, often deployed out-of-container or using an embedded http server are a move away from traditional large technical services. The approach trades benefits such as maintainablity for operational complexity. These drawbacks are typically addressed using infrastructure automation and continuous deployment techniques. On balance, micro-services are an effective way of managing technical debt and handling different scaling characteristics especially when deployed in a service oriented architecture built around business capabilities.
-
-<p>A decade ago when memory was at a premium, application servers made a lot of sense. They were popular and useful as a mechanism to run and manage multiple applications on a shared server or cluster. These days applications are more often run on separate physical or virtual servers and the need for an application server is reduced. Consider evaluating <strong>server / application container end of life</strong> within your organization, and only use one if you benefit from the added complexity.
-
-<p><strong>Embedding a servlet container</strong>, such as Jetty, inside a Java application has many advantages over running the application inside a container. Testing is relatively painless because of the simple startup, and the development environment is closer to production. Nasty surprises like mismatched versions of libraries or drivers are eliminated by not sharing across multiple applications. While you will have to manage and monitor multiple Java Virtual Machines in production using this model, we feel the advantages offered by the simplicity and isolation are significant.
-
-<p>With the popularity of embedded HTTP servers increasing, so has the technique of <strong>out-of-container functional testing</strong>. That is writing tests at the boundary of the system, using a mock container to provide both fast feedback and high coverage. Servers such as Jetty and tools like Plasma for the .Net platform can provide a significant reduction in the time it takes to run your test suite.
-
-<p><strong>Experience Design (XD)</strong> is an example of ways in which agility must evolve to accommodate real-world constraints. We are always interested in finding innovative ways to incorporate what have traditionally been up-front exercises into practices like Continuous Delivery. XD is a ripe field for study.
-
-<p>There is a worrying trend that developers are becoming too distant from the hardware on which their code runs. Increasing virtualization and separation between development and operations makes this worse. In stark contrast some teams are writing code that leverages <strong>mechanical sympathy</strong> to get incredibly high performance from their software. The LMAX Disruptor is an open-source example in Java. For high performance cases like finance and Big Data, getting closer to the metal can yield big returns.
-
-<p>Applying agile methods to data warehousing, business intelligence and <strong>agile analytics</strong> provides better return and improved business responsiveness. This is done by applying lightweight technologies like REST services to move data around in near real-time instead of batch updates. This allows information about customer behavior and application usage to be derived and responses incorporated within the applications for better user experience and data visualization.
-
-<p>We have found adding simple <strong>health check pages</strong> to applications is incredibly useful. This allows people to quickly understand the health of an individual node. We often extend them to add metrics like the number of orders placed, error rates, or similar information. Using simple embedded web servers, even non-web based services can easily expose internal information over HTTP. By using microformats, these web pages can easily be scraped by other monitoring tools to become part of holistic monitoring.
-
-<p>A key step in the Continuous Delivery process is the ability to release software arbitrarily close to when the business wants it. The ability to do <strong>single command deploy</strong> relies on a complete set of activities that fall under the umbrella of Continuous Delivery including extensive automation of everything from build/test to scripted environment provisioning and deployment. We have found that adopting this as a goal tends to drive the automation and testing pre-requisites upstream into the rest of your organization.
-
-<p>Continuous delivery techniques are shortening the “last mile” to get changes into production, allowing more frequent feature releases. A <strong>production immune system</strong> tracks changes as they are put into production, and automatically rolls back changes that have a negative effect on key metrics, such as revenue. Solid metrics, as well as automated A/B deployment, are required for this kind of aggressive rollback to be successful.
-
-<p>Automation is one of the core practices of Continuous Delivery. While companies are getting better at automating the management of infrastructure and environments, one commonly forgotten aspect is <strong>infrastructure automation of development workstations</strong>. This leads to huge gains in productivity by avoiding manually building specific environments and allows a seamless pairing environment. As with other parts of the environment, tools like Puppet and Chef can be used though they are not entirely necessary as the judicious use of platform packaging and language build tools can be sufficient.
-
-<p>Mature tools such as PowerShell, together with newer options such as Chef and Puppet, lead us to highlight <strong>Windows infrastructure automation</strong> on this edition of the Technology Radar. Manual configuration using a mouse and menu options is slow and leads to misconfiguration and ‘snowflake’ machines in an unknown state. We recommend command-line tools for their clarity and scriptability.
-
-<p>We have long advocated for both static and dynamic code analysis tools to help glean information about your code base. As the focus of software development broadens because of the Continuous Delivery movement, <strong>data visualizations of development and operations</strong> with effective, actionable profiling and monitoring should be part of your technical stack as well.
-
-<p>Story level testing can lead to a focus on completing individual stories instead of coherent functionality. It tends to produce a large, hard to maintain test suite which runs slowly, delaying the feedback loop. The alternative is <strong>user journeys</strong>, which are groupings of user stories into sets of user interactions that provide value for both users and the business. Automating these into a suite leads to tests which hold their intent for longer periods of time and whose failure reveals a failure in the application's ability to deliver concrete value to its users.
-
-<p>The advent of behavior driven design (BDD) testing frameworks like Cucumber, combined with browser automation tools like Selenium, has encouraged widespread use of acceptance testing at the browser level. This unfortunately encouraged doing the bulk of testing where the cost to run the tests is the greatest. Instead, we should <strong>test at the appropriate level</strong>, as close to the code as possible, so that tests can be run with maximum efficiency. Browser-level tests should be the icing on the cake, supported by acceptance and unit tests executed at appropriate layers.
-
-<p>While unit and acceptance testing are widely embraced as standard development practices, this trend has not continued into the realm of performance testing. Currently, the common tooling drives testers towards creating throw away code and a click and script mentality. Treating <strong>performance testing as a first class citizen</strong> enables the creation of better tests that cover more functionality, leading to better tooling to create and run performance tests, resulting in a test suite that is maintainable and can itself be tested.
-
-<p><strong>Test recorders</strong> seem invaluable as they provide a quick way to capture navigation through an application. However, we strongly advise against their regular use, as it tends to result in brittle tests which break with small changes to the UI. The test code they produce tends to be relatively poor and riddled with unnecessary duplication. Most importantly, test recorders tend to cut channels of communication between the test automation and development teams. When faced with an application that is difficult to test through the user interface, the solution is to have a critical conversation between the teams to build a more testable UI.
-
-<a href='technology-radar-march-2012#top' class='button right'>top^</a>        </div>
-              <div class="field-item odd">
-                    <a name="Tools" class="navigation_target">&nbsp;</a>
-<h4 id="toc2">Tools</h4>
- <strong>Polyglot persistence</strong> is the technique of storing data in various data stores based on efficiency and how that data is going to be used. Do not use the default database, often an RDBMS, for all the needs of the application. Instead, ask questions like: Does session management data belong in the database or does it belong in a key-value store? Do relationships between customers and products belong in a graph database? Using <strong>NoSQL</strong> databases like MongoDB, Riak, Neo4J allows us to reconsider how data is treated, even within a single application.<p><strong>Riak</strong> is a distributed key-value store that is schema-less and data-type agnostic, it can be put to good use in write heavy projects to store data such as sessions, shopping carts and streaming logs. The ability of the distributed cluster to self recover, distribute data across the cluster with tuneable consistency and availability settings, do collision detection and resolve those if needed can be helpful in high availability environments and provide interesting solutions in the architecture.
-
-<p>With mobile applications on the rise, JavaScript size and performance is even more critical. <strong>JavaScript micro frameworks</strong> have emerged as a direct response to ‘bloat’ in some of the larger libraries. These small libraries do exactly one thing, such as DOM selection or MVC, and can be under one kilobyte in size. By combining a number of micro frameworks, developers can get exactly the functionality they need without the overhead of a larger library. Microjs.com hosts a collection of these micro frameworks, as well as a tool that can bundle them into a single library.
-
-<p>JavaScript is now established as a powerful, mainstream language that can be used in a variety environments both on client and server sides. As JavaScript codebases expand, more <strong>JavaScript tooling</strong> support becomes necessary, especially in the continuous integration and testing spaces. Tools like Backbone.js, SpineJS, JavaScriptMVC, Jasmine, JSTestDriver and HRcov are coming to the forefront. They are created by a vibrant community that continues to grow.
-
-<p><strong>Frank</strong> is an open source library that allows functional tests for iPhones and iPads to be written in Cucumber and executed on a remote device. This fills an important niche in iOS development where acceptance test-driven development was previously cumbersome and awkward.
-
-<p>While MVC has been a staple of web development for the past few years, most libraries and frameworks fail to adhere to one of its most important principles: keeping logic out of the view layer. The consequences of not having <strong>logic-free markup</strong> include complex dependencies, difficulty testing and inability to reuse code. Recent DSLs like Mustache, are available for many languages and platforms and have started to turn the trend. They allow editing in any tool, without extra requirements for language support and provide huge gains for UI development and overall application design.
-
-<p>We continue to highlight <strong>infrastructure as code</strong>. This technique treats infrastructure configuration in the same way as code; checking configuration into source control, then carefully pushing changes out to the data center.
-
-<p>There are many advantages to using OS-native packages to deploy components and dependencies, however the tools which build native packages for Linux are not trivial. <strong>FPM</strong> is a useful tool which makes it easy to create RPM, DEB, or Solaris packages with a minimum of fuss.
-
-<p>Package management systems are a widely accepted practice for incorporating third party libraries. Tools such as RubyGems, Maven and APT are available at both language and system level. <strong>NuGet</strong> is such a system for .Net. It consists of a Visual Studio IDE extension and a PowerShell module that opens the possibility for further improving build automation on the .Net platform.
-
-<p><strong>PSake</strong> (pronounced 'sake' like the Japanese rice wine) is a build automation tool implemented in PowerShell. PSake provides a tidy syntax for declaring build tasks and dependencies without programming in XML. You also have access to all the features of PowerShell and the .Net framework from within your build scripts.
-
-<p><strong>Maven</strong> has long been a staple of build automation in the Java space. However, given its lack of flexibility and support for automation best practices, especially in the Continuous Delivery domain, the use of alternatives such as Gradle should be considered.
-
-<a href='technology-radar-march-2012#top' class='button right'>top^</a>        </div>
-              <div class="field-item even">
-                    <a name="Platforms" class="navigation_target">&nbsp;</a>
-<h4 id="toc3">Platforms</h4>
-<p>Node.js is just one example of a class of <strong>single threaded servers with asynchronous I/O</strong> that are seeing increased popularity. A traditional web or application server associates each incoming request with a thread until all the processing tasks associated with that request are complete and the response has been sent back. If any of those tasks involve I/O, the thread blocks while that I/O takes place. This approach can waste finite resources such as file descriptors and memory since each connection occupies a thread whether or not that thread is actually consuming CPU cycles. An alternative architecture is starting to emerge in implementations like Node.js (a Javascript server running on Google V8), Nginx (an open source web server and proxy), and Webbit (a Java application server), that uses a single thread to serve many connections, processing all I/O asynchronously. These servers support orders of magnitude more simultaneous connections because each one consumes far less resources.
-
-<p>Because of concerns over privacy and security, or a need to repurpose existing hardware investments, many businesses are choosing to implement their own <strong>private cloud</strong>. There are are a variety of products, both open source and commercial for this purpose, but it should be noted that compute, storage, and network management are only the starting points for a useful private cloud. There are many services and processes that must be custom implemented to provide a cloud facility that rivals the public offerings from Amazon, Rackspace, or others.
-
-<p><strong>Hybrid clouds</strong> describe a set of patterns that combine the best features of public clouds and private data centers. They allow applications to run in a private data center during normal periods then use rented space in a public cloud for overflow capacity during peak traffic periods. Another way to combine public and private clouds in an agile way is to use the elasticity and malleability of public clouds for developing and understanding an application's production characteristics, then moving it into permanent infrastructure in a private data center when it is stable.
-
-<p>While it can be all too easy to ignore geographical location of cloud-based services, for legal and technical reasons it can be a serious constraint when considering appropriate platforms. With the recently announced Brazil and Singapore regions, Amazon has made AWS-based systems more viable for people in areas previously poorly served by IaaS providers. In addition, they continue to add features to existing services, such as VPC. We remain confident in recommending <strong>AWS</strong> for those situations where flexibility in provisioning resources is key.
-
-<p><strong>AppHarbor</strong> is a Platform as a Service (PaaS) offering for the .Net platform using the same pricing model and structure pioneered by Heroku. It is a promising take on the deployment of .Net applications as it abstracts away most of the underlying configuration needs that come with the platform. It is maturing quickly and we expect it will see growing interest in time to come.
-
-<p>One style of virtualization that is particularly attractive for SaaS and PaaS implementations is the virtual container. <strong>Linux containers</strong> such as OpenVZ provide the isolation and management benefits of a virtual machine without the overhead usually associated with general-purpose virtualization. In the container model, the guest OS is limited to being the same as the underlying host OS, but that is not a serious limitation for many cloud applications.
-
-<p>We find that many businesses are starting to build their own internal cloud deployment environments that can be easily replicated for development and testing environments. In many cases, provisioning is self service, and with a single keystroke, developers can create a set of hosts that implement core enterprise assets and collaborating systems. In a sense, this is a <strong>domain-specific PaaS</strong> offered to internal customers.
-
-<p><strong>Windows Phone 7</strong> has surprised even some of the long time critics of Windows platforms. After many failed attempts, Microsoft has managed not only to produce a mobile operating system that provides a user experience on par with the other major contenders in the space but also the development support to go with it. Microsoft is making Windows Phone 7 a viable competitor and another choice for a more integrated experience in the corporate arena. Whether it will be able to change adoption trends remains to be seen.
-
-<p><strong>OpenSocial</strong> is a specification that provides a standard way to share content between semi-trusted applications. While initially proposed for public facing social networking websites, it has possibly more potential within the corporate firewall, where the benefits of being able to share data and content between applications in a standard manner frequently outweigh the requirements of scale and security.
-
-<p>One of the principal mechanisms that allows agile software development to work is feedback loops. One common yet expensive broken feedback loop we have observed is the lack of <strong>communication between those responsible for hardware and software</strong>. The end result creates cost but not worth. You must view architecture holistically; neither hardware nor software has a full enough perspective to be successful alone.
-
-<p>While virtualization is on the rise, some organizations are <strong>treating virtual machines like physical infrastructure</strong>. We frown on doing a full operating system install for each VM or using VMs for load testing. Virtual machines can be cloned, snapshotted, and manipulated in ways physical machines cannot, and also have vastly different performance characteristics than physical hardware. VMs should be used with full understanding of their benefits and limitations, otherwise you can really get into trouble with them.
-
-<p>Many teams encounter problems that are caused by their test environment missing an expensive hardware component that is only present in production. While a pre-production environment in many cases cannot approach the scale of a production environment, all of its components should be present. We recommend not <strong>buying solutions you can only afford one of</strong>, such as SAN, firewalls or load balancers, as this prevents realistic testing anywhere but in production.
-
-<p>We have long been less than enthusiastic about <strong>RIA</strong> technologies such as Flash and Silverlight because of vendor lock-in potential, anemic support for agile engineering practices, and potential for overuse. It seems even the large vendors are starting to agree with us. Now that modern versions of HTML handle most of the common cases that formerly required RIA, we feel that new projects must have enormous justification and careful strategic thought before using any of these technologies.
-
-<p>There are a number of enterprise software packages on the market that purport to offer flexible functionality with zero coding. This is certainly an appealing notion – that a non-technical business user could configure software to the unique requirements of any business without learning a programming language or hiring a professional software developer. However, it should be kept in mind that any change that affect the behavior of software in production, whether it is code, configuration, data, or environments, could cause defects or failures in the business system. Writing code is only one step in a professional software production lifecycle. The need for repeatable analysis, testing, build, and deployment does not go away because the system is modified via a drag-and-drop interface instead of a high-level programming language. When evaluating a <strong>zero-code package</strong>, ensure that the the product supports these processes and that you have the necessary IT support structures in place to implement them.
-
-<p>We are reiterating our advice that given the progress and acceptance of simpler web-as-platform techniques such as REST and OAuth and the known issues with <strong>WS-*</strong>, it should only be used cautiously.
-
-<a href='technology-radar-march-2012#top' class='button right'>top^</a>        </div>
-              <div class="field-item odd">
-                    <a name="Languages" class="navigation_target">&nbsp;</a>
-<h4 id="toc4">Languages</h4>
-<p>The industry is experiencing something of a renaissance in programming languages. ThoughtWorks thinks it is time to start assessing which other languages will help your organization while taking stock of the useful lifetime remaining for your current choices. You need to <strong>care about languages</strong>. Traditionally structured organizations with separate support teams may find skills constrain choice, DevOps offers a path forwards here.
-
-<p>Functional programming continues its slow but steady ascent into developer mind share and, increasingly, code bases. New languages like Clojure, Scala, and F# offer great new features. Now libraries such as <strong>Functional Java</strong>, TotallyLazy and LambdaJ are back porting some functional language capabilities, particularly around higher-order functions and collections, into Java. We like this trend because it previews common capabilities of future languages yet allows developers to stay in their comfort zone.
-
-<p>Microsoft's <strong>F#</strong> continues to evolve, with the recent release of F# 3.0 beta. F# is excellent at concisely expressing business and domain logic. Developers trying to achieve explicit business logic within an application may opt to express their domain in F# with the majority of plumbing code in C#.
-
-<p><strong>ClojureScript</strong> illustrates just how cross-platform the core of Clojure really is: they ported the primary parts to run on JavaScript. It is missing some of the whizz-bang features of Clojure on the JVM and CLR, like software transactional memory, but has a surprisingly high fidelity with its more sophisticated cousins. One interesting option afforded by ClojureScript is the ability to send data structures à la JSON using ClojureScript as the data structure. Because Clojure is a Lisp, this means that you can also send “real” code.
-
-<p>Rich experiences delivered via the web to desktops, tablets and mobile devices rely heavily on JavaScript, and we continue to recommend treating <strong>JavaScript as a “first class” language</strong> within your application. Developers should carefully consider how they structure, test, refactor and maintain JavaScript code, applying the same rigor as they would with any other programming language.
-
-<p><strong>Dart</strong> is Google's attempt at creating a programming language to replace JavaScript due to JavaScript's perceived flaws and inherent performance issues. Dart, in line with previous Google languages, provides Java-like syntax and semantics that are intended to be more appealing than JavaScript's prototype-based nature. Reception within the browser-development community has been understandably cool and it remains to be seem if the language will become more widely accepted, though Chrome's continued rise and the search for alternatives like CoffeeScript may yet shift that balance.
-
+<div id="content"></div>
 <a href='technology-radar-march-2012#top' class='button right'>top^</a>        </div>
               <div class="field-item even">
                     <a name="References" class="navigation_target">&nbsp;</a>
@@ -338,20 +217,14 @@
   
 <h3 id="toc7"> <a href="http://www.thoughtworks.cfiles/images/52/radar-march-2012-landscape-medium.jpg"   rel="lightbox"   > Technology Radar March 2012  </a></h3>
 <hr />
-<p><br /> <a href="http://www.thoughtworks.cfiles/images/52/radar-march-2012-landscape-medium.jpg"   rel="lightbox"   > <img alt="Technology Radar March 2012" src="files/images/52/radar-march-2012-landscape-small.jpg"   > </a> <br /> <div class="two_col_text"> <div class="column left"> 
-<h3 id="toc8"> <a href="http://www.thoughtworks.cfiles/images/52/radar-march-2012-techniques.jpg"   rel="lightbox"   > Techniques  </a></h3>
 
-
-<p><a href="http://www.thoughtworks.cfiles/images/52/radar-march-2012-techniques.jpg"   rel="lightbox"   > <img alt="Techniques" src="files/images/52/radar-march-2012-techniques-small.jpg"   > </a> </div> <div class="column"> 
-<h3 id="toc9"> <a href="http://www.thoughtworks.cfiles/images/52/radar-march-2012-tools.jpg"   rel="lightbox"   > Tools  </a></h3>
- <a href="http://www.thoughtworks.cfiles/images/52/radar-march-2012-tools.jpg"   rel="lightbox"   > <img alt="Tools" src="files/images/52/radar-march-2012-tools-small.jpg"   > </a> </div> </div> <div class="two_col_text"> <div class="column left"> 
-<h3 id="toc10"> <a href="http://www.thoughtworks.cfiles/images/52/radar-march-2012-platforms.jpg"   rel="lightbox"   > Platforms  </a></h3>
-
-
-<p><a href="http://www.thoughtworks.cfiles/images/52/radar-march-2012-platforms.jpg"   rel="lightbox"   > <img alt="Platforms" src="files/images/52/radar-march-2012-platforms-small.jpg"   > </a> </div> <div class="column"> 
-<h3 id="toc11"> <a href="http://www.thoughtworks.cfiles/images/52/radar-march-2012-languages.jpg"   rel="lightbox"   > Languages  </a></h3>
- <a href="http://www.thoughtworks.cfiles/images/52/radar-march-2012-languages.jpg"   rel="lightbox"   > <img alt="Languages" src="files/images/52/radar-march-2012-languages-small.jpg"   > </a> </div> </div>
-
+        <p>
+          <a href="javascript:zoomIn('techniques')">Techniques</a> |
+          <a href="javascript:zoomIn('tools')">Tools</a> |
+          <a href="javascript:zoomIn('languages')">Languages</a> |
+          <a href="javascript:zoomIn('platforms')">Platforms</a> |
+          <a href="javascript:zoomOut()">OUT</a>
+        </p>
 </div>
 <div id="block-287" class="block ">
 
@@ -450,6 +323,26 @@
             </div>
         </div>
         <script type="text/javascript" src="files/js/js_fe33c885c2f5a25a5ca4430547504573.jsmin.js"></script>
+        <script type="text/javascript" src="d3.v2.min.js"></script>
+        <script type="text/javascript" src="radar.js"></script>
+    <script>
+      function zoomIn(quadrantName) {
+        var quadrant = d3.select("g#" + quadrantName).select(".largest-arc");
+
+        quadrant.on("click").call(quadrant[0][0]);
+      }
+
+      function zoomOut() {
+        d3.select("g#radar").transition()
+          .attr('transform', '');
+
+        d3.selectAll('text').transition()
+          .duration(800)
+          .style('opacity', '0')
+      }
+      var content = document.getElementById("content");
+      Radar.draw(content, "radar.svg", "thoughtworks_tech_radar_jan_2012.json");
+    </script>
 <script type="text/javascript">
 <!--//--><![CDATA[//><!--
 jQuery.extend(Drupal.settings, { "basePath": "/" });
