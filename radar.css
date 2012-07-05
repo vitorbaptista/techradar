@@ -16,24 +16,22 @@ path {
   stroke-width: 1px;
   fill: none;
 }
-circle.blip,
-polygon.blip {
-  fill: #11A5E3;
-  cursor: pointer;
-}
-circle.active,
-polygon.active {
-  cursor: pointer;
-  stroke: #000;
-  stroke-width: 1px;
-}
 text.label {
   cursor: pointer;
   font: 9px arial,helvetica,clean,sans-serif;
 }
+g.blip-container {
+  cursor: pointer;
+}
+g.blip-container use {
+  fill: #11A5E3;
+}
 g.active use {
-  stroke: red;
-  stroke-width: 1px;
+  fill: red;
+}
+g.active text {
+  opacity: 1 !important;
+  display: block !important;
 }
 /* shows text only when zoomed */
 text.blip {
