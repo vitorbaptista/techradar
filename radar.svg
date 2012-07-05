@@ -1,4 +1,5 @@
-<svg width="800" height="800" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg width="595" height="595" xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <g transform="scale(0.74,0.74)">
   <g id="radar">
 
     <g id="techniques" class="quadrant">
@@ -41,5 +42,6 @@
       </g>
     </g>
 
+  </g>
   </g>
 </svg>
